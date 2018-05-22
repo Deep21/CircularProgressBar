@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewTreeObserver;
 import android.widget.SeekBar;
 
 import com.larswerkman.lobsterpicker.OnColorListener;
@@ -27,7 +28,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         circularProgressBar = (CircularProgressBar) findViewById(R.id.circularProgressbar);
-        circularProgressBar.setProgressWithAnimation(65);
+        //circularProgressBar.setProgressWithAnimation(65);
+        circularProgressBar
+                .getViewTreeObserver()
+                .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        circularProgressBar.getViewTreeObserver().removeOnPreDrawListener(this);
+                        circularProgressBar.setProgressWithAnimation(65, 800);
+                        return true;
+                    }
+        });
 
         // PROGRESS
         ((SeekBar) findViewById(R.id.seekBarProgress)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

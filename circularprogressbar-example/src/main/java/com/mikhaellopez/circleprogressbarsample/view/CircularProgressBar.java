@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
@@ -15,6 +16,7 @@ import com.mikhaellopez.circleprogressbarsample.R;
 
 public class CircularProgressBar  extends View {
 
+    private static final String TAG = "CircularProgressBar";
     // Properties
     private float progress = 0;
     private float strokeWidth = getResources().getDimension(R.dimen.default_stroke_width);
@@ -62,6 +64,7 @@ public class CircularProgressBar  extends View {
         foregroundPaint.setColor(color);
         foregroundPaint.setStyle(Paint.Style.STROKE);
         foregroundPaint.setStrokeWidth(strokeWidth);
+        foregroundPaint.setStrokeCap(Paint.Cap.ROUND);
     }
     //endregion
 
@@ -72,6 +75,7 @@ public class CircularProgressBar  extends View {
         canvas.drawOval(rectF, backgroundPaint);
         float angle = 360 * progress / 100;
         canvas.drawArc(rectF, startAngle, angle, false, foregroundPaint);
+        Log.d(TAG, "onDraw: ");
     }
     //endregion
 
@@ -93,7 +97,7 @@ public class CircularProgressBar  extends View {
     }
 
     public void setProgress(float progress) {
-        this.progress = (progress<=100) ? progress : 100;
+        this.progress = (progress <= 100) ? progress : 100;
         invalidate();
     }
 
