@@ -14,7 +14,8 @@ import android.widget.SeekBar;
 
 import com.larswerkman.lobsterpicker.OnColorListener;
 import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider;
-import com.mikhaellopez.circularprogressbar.CircularProgressBar;
+import com.mikhaellopez.circleprogressbarsample.view.CircularProgressBar;
+
 
 public class MainActivity extends AppCompatActivity {
 

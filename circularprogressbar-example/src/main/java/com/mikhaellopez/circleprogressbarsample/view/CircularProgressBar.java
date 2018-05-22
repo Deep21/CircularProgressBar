@@ -1,4 +1,4 @@
-package com.mikhaellopez.circularprogressbar;
+package com.mikhaellopez.circleprogressbarsample.view;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -11,10 +11,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-/**
- * Created by Mikhael LOPEZ on 16/10/2015.
- */
-public class CircularProgressBar extends View {
+import com.mikhaellopez.circleprogressbarsample.R;
+
+public class CircularProgressBar  extends View {
 
     // Properties
     private float progress = 0;
